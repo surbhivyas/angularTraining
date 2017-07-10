@@ -12,16 +12,16 @@
   <div class = "main-heading">TROOSEARCH</div>
 
   <div class="troosearch">
-    <input type="text" ng-model="setClicked" ng-keydown = "keyPressed($event)" name = "txt" placeholder = "Enter property!" id = "box" >
-    <input type="text" name="txtbehind" id="boxbehind" >
+    <input type="text" ng-class = "{'box' : box == true}" ng-model="setClicked" ng-keydown = "keyPressed($event)" name = "txt" placeholder = "Enter property!" >
+    <input type="text" name="txtbehind" id="boxbehind" ng-model = "set" >
   </div>
 
 
   <div id='parent-box'>
-    <!--<div ng-show="loading == true" id="loading-suggestions">Loading...</div>-->
-    <div ng-show = "key >=65 " ng-click = "clickedNow({eve: $event})"  ng-class="{'single-box' :key >=65}">
+    <div ng-show = "loading == true" ng-class = "{'loading-suggestions' : loading == true}">Loading...</div>
+    <div ng-show = "key >=65 && loading == false " ng-click = "clickedNow({eve: $event})"  ng-class="{'single-box' :key >=65  && loading == false}">
 
-        <div ng-class = "{'suggestionBox':key>=65 && key <= 90}" ng-repeat = "singleData in data">
+        <div ng-class = "{'suggestionBox':key>=65 && key <= 90  && loading == false}" ng-repeat = "singleData in data">
           {{ singleData.name }}
 
         </div>
